@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-8u_ga!z3&46k)ddzqcx@tj5s7@1x0w8q*9@nb09q-zsh-0maph
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ptpcc.azurewebsites.net/',
+ALLOWED_HOSTS = ['ptpcc.azurewebsites.net',
                 'localhost',
                  ]
 
