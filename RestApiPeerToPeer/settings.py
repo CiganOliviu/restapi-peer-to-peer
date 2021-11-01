@@ -158,10 +158,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
-    'https://zealous-glacier-09c8ea803.azurestaticapps.net',
+    'https://zealous-hill-015fcdc03.azurestaticapps.net',
     'http://localhost:3000',
     'http://localhost:8000',
-    # 'https://www.peertopeerlearning.ro/',
+    'https://www.peertopeerlearning.ro/',
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
