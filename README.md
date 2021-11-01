@@ -1,2 +1,2 @@
 # restapi-peer-to-peer
-Peer to Peer learning Control Center.
+Students and schedule management for teachers!
