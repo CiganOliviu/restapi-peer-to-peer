@@ -48,7 +48,7 @@ class Staff(models.Model):
     description = models.TextField(default=None, blank=False)
     position = models.ForeignKey(Position, on_delete=models.CASCADE, name='position', default=None, blank=False)
     linkedin_url = models.URLField(default='')
-    email_url = models.URLField(default='')
+    email_url = models.CharField(max_length=150, default='')
 
     def __str__(self):
         return str(self.user)
