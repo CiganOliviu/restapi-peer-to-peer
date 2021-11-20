@@ -26,6 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['ptpcc.azurewebsites.net',
                 'localhost',
+                '192.168.1.6',
                  ]
 
 # Application definition
@@ -158,11 +159,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
-    'https://zealous-hill-015fcdc03.azurestaticapps.net',
+    # 'https://zealous-hill-015fcdc03.azurestaticapps.net',
     'http://localhost:3000',
     'http://localhost:8000',
-    'https://www.peertopeerlearning.ro/',
-    'https://peertopeerlearning.ro/',
+    'http://192.168.1.6:3000',
+    # 'https://www.peertopeerlearning.ro/',
+    # 'https://peertopeerlearning.ro/',
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
