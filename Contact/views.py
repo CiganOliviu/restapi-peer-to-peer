@@ -1,22 +1,21 @@
 from django.http import Http404
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-
-from AppDependencies.models import HeroCard
-from AppDependencies.serializer import HeroCardSerializer
+from Contact.serializers import ContactSerializers
+from Contact.models import Contact
 
 
-class HeroCardLister(APIView):
+class ContactLister(APIView):
 
     def get(self, request, format=None):
-        database_objects = HeroCard.objects.all()
-        serializer = HeroCardSerializer(database_objects, many=True)
+        data_objects = Contact.objects.all()
+        serializer = ContactSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        serializer = HeroCardSerializer(data=request.data)
+        serializer = ContactSerializers(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -25,23 +24,23 @@ class HeroCardLister(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class HeroCardDetail(APIView):
+class ContactDetails(APIView):
 
     def get_post(self, pk):
         try:
-            return HeroCard.objects.get(pk=pk)
+            return Contact.objects.get(pk=pk)
         except:
             raise Http404
 
     def get(self, request, pk, format=None):
         post = self.get_post(pk)
-        serializer = HeroCardSerializer(post)
+        serializer = ContactSerializers(post)
 
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
         post = self.get_post(pk)
-        serializer = HeroCardSerializer(post, data=request.data)
+        serializer = ContactSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -54,4 +53,3 @@ class HeroCardDetail(APIView):
         post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
-

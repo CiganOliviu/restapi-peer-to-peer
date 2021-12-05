@@ -1,5 +1,9 @@
+from rest_framework import serializers
 from .models import *
-from Stats.serializers import *
+from Stats.serializers import (
+    TeacherSerializers,
+    ClientSerializers
+)
 
 
 class RomanianGroupSerializers(serializers.ModelSerializer):

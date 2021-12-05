@@ -1,9 +1,10 @@
-from .models import *
+from Stats.models import *
 from Details.serializers import *
 
 
 class ClientSerializers(serializers.ModelSerializer):
     high_school_profile = HighSchoolProfileSerializers(read_only=True)
+    high_school = HighSchoolSerializers(read_only=True)
     city = TownSerializers(read_only=True)
 
     class Meta:
@@ -50,11 +51,11 @@ class FeedbackSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class TeacherExpectationSerializers(serializers.ModelSerializer):
+class TeacherGoalsSerializers(serializers.ModelSerializer):
     teacher = TeacherSerializers(read_only=True)
 
     class Meta:
-        model = TeacherExpectation
+        model = TeacherGoal
         fields = '__all__'
 
 

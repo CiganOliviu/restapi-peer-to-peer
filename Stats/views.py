@@ -2,14 +2,14 @@ from django.http import Http404
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import *
+from Stats.serializers import *
 
 
 class ClientLister(APIView):
 
     def get(self, request, format=None):
-        locations = Client.objects.all()
-        serializer = ClientSerializers(locations, many=True)
+        data_objects = Client.objects.all()
+        serializer = ClientSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -38,8 +38,8 @@ class ClientDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = ClientSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = ClientSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -48,8 +48,8 @@ class ClientDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -57,8 +57,8 @@ class ClientDetails(APIView):
 class TeacherLister(APIView):
 
     def get(self, request, format=None):
-        locations = Teacher.objects.all()
-        serializer = TeacherSerializers(locations, many=True)
+        data_objects = Teacher.objects.all()
+        serializer = TeacherSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -87,8 +87,8 @@ class TeacherDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = TeacherSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = TeacherSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -97,8 +97,8 @@ class TeacherDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -106,8 +106,8 @@ class TeacherDetails(APIView):
 class StaffLister(APIView):
 
     def get(self, request, format=None):
-        locations = Staff.objects.all()
-        serializer = StaffSerializers(locations, many=True)
+        data_objects = Staff.objects.all()
+        serializer = StaffSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -136,8 +136,8 @@ class StaffDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = StaffSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = StaffSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -146,8 +146,8 @@ class StaffDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -155,8 +155,8 @@ class StaffDetails(APIView):
 class IncomeLister(APIView):
 
     def get(self, request, format=None):
-        locations = Income.objects.all()
-        serializer = IncomeSerializers(locations, many=True)
+        data_objects = Income.objects.all()
+        serializer = IncomeSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -185,8 +185,8 @@ class IncomeDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = IncomeSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = IncomeSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -195,8 +195,8 @@ class IncomeDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -204,8 +204,8 @@ class IncomeDetails(APIView):
 class ExpenseLister(APIView):
 
     def get(self, request, format=None):
-        locations = Expense.objects.all()
-        serializer = ExpenseSerializers(locations, many=True)
+        data_objects = Expense.objects.all()
+        serializer = ExpenseSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -234,8 +234,8 @@ class ExpenseDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = ExpenseSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = ExpenseSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -244,8 +244,8 @@ class ExpenseDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -253,8 +253,8 @@ class ExpenseDetails(APIView):
 class FeedbackLister(APIView):
 
     def get(self, request, format=None):
-        locations = Feedback.objects.all()
-        serializer = FeedbackSerializers(locations, many=True)
+        data_objects = Feedback.objects.all()
+        serializer = FeedbackSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -283,8 +283,8 @@ class FeedbackDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = FeedbackSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = FeedbackSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -293,8 +293,8 @@ class FeedbackDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -302,13 +302,13 @@ class FeedbackDetails(APIView):
 class TeacherExpectationLister(APIView):
 
     def get(self, request, format=None):
-        locations = TeacherExpectation.objects.all()
-        serializer = TeacherExpectationSerializers(locations, many=True)
+        data_objects = TeacherGoal.objects.all()
+        serializer = TeacherGoalsSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        serializer = TeacherExpectationSerializers(data=request.data)
+        serializer = TeacherGoalsSerializers(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -321,19 +321,19 @@ class TeacherExpectationDetails(APIView):
 
     def get_post(self, pk):
         try:
-            return TeacherExpectation.objects.get(pk=pk)
+            return TeacherGoal.objects.get(pk=pk)
         except:
             raise Http404
 
     def get(self, request, pk, format=None):
         post = self.get_post(pk)
-        serializer = TeacherExpectationSerializers(post)
+        serializer = TeacherGoalsSerializers(post)
 
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = TeacherExpectationSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = TeacherGoalsSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -342,8 +342,8 @@ class TeacherExpectationDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -351,8 +351,8 @@ class TeacherExpectationDetails(APIView):
 class StudentExpectationLister(APIView):
 
     def get(self, request, format=None):
-        locations = StudentExpectation.objects.all()
-        serializer = StudentExpectationSerializers(locations, many=True)
+        data_objects = StudentExpectation.objects.all()
+        serializer = StudentExpectationSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -381,8 +381,8 @@ class StudentExpectationDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = StudentExpectationSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = StudentExpectationSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -391,7 +391,7 @@ class StudentExpectationDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)

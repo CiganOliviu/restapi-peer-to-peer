@@ -1,5 +1,4 @@
 import datetime
-
 from AppDependencies import update_model_content
 from Stats.models import *
 

@@ -9,6 +9,7 @@ class Client(models.Model):
     email = models.EmailField(max_length=50, default=None, blank=True, null=True)
     high_school_profile = models.ForeignKey(HighSchoolProfile, on_delete=models.CASCADE, default=None, blank=False,
                                             null=True)
+    high_school = models.ForeignKey(HighSchool, on_delete=models.CASCADE, default=None, blank=False, null=True)
     city = models.ForeignKey(Town, on_delete=models.CASCADE, default=1, blank=False, null=True)
     phone_number = models.CharField(max_length=100, default="07 XXX XXX XX", blank=False)
 
@@ -84,7 +85,7 @@ class Feedback(models.Model):
         return self.title
 
 
-class TeacherExpectation(models.Model):
+class TeacherGoal(models.Model):
     teacher = models.ForeignKey(User, on_delete=models.CASCADE, name='teacher', default=None, blank=True)
     title = models.CharField(max_length=150, default='', blank=False)
     log = models.TextField(default='', unique=True)

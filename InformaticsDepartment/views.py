@@ -2,14 +2,14 @@ from django.http import Http404
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import *
+from InformaticsDepartment.serializers import *
 
 
 class InformaticsGroupLister(APIView):
 
     def get(self, request, format=None):
-        locations = InformaticsGroup.objects.all()
-        serializer = InformaticsGroupSerializers(locations, many=True)
+        data_objects = InformaticsGroup.objects.all()
+        serializer = InformaticsGroupSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -38,8 +38,8 @@ class InformaticsGroupDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = InformaticsGroupSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = InformaticsGroupSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -48,8 +48,8 @@ class InformaticsGroupDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -57,8 +57,8 @@ class InformaticsGroupDetails(APIView):
 class InformaticsScheduleLister(APIView):
 
     def get(self, request, format=None):
-        locations = InformaticsSchedule.objects.all()
-        serializer = InformaticsScheduleSerializers(locations, many=True)
+        data_objects = InformaticsSchedule.objects.all()
+        serializer = InformaticsScheduleSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -87,8 +87,8 @@ class InformaticsScheduleDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = InformaticsScheduleSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = InformaticsScheduleSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -97,8 +97,8 @@ class InformaticsScheduleDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -106,8 +106,8 @@ class InformaticsScheduleDetails(APIView):
 class InformaticsHomeworkLister(APIView):
 
     def get(self, request, format=None):
-        locations = InformaticsHomework.objects.all()
-        serializer = InformaticsHomeworkSerializers(locations, many=True)
+        data_objects = InformaticsHomework.objects.all()
+        serializer = InformaticsHomeworkSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -136,8 +136,8 @@ class InformaticsHomeworkDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = InformaticsHomeworkSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = InformaticsHomeworkSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -146,7 +146,7 @@ class InformaticsHomeworkDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)

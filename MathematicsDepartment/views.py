@@ -1,16 +1,25 @@
 from django.http import Http404
-
-from .serializers import *
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+
+from MathematicsDepartment.models import (
+    MathGroup,
+    MathSchedule,
+    MathHomework
+)
+from MathematicsDepartment.serializers import (
+    MathematicsGroupSerializers,
+    MathematicsScheduleSerializers,
+    MathematicsHomeworkSerializers
+)
 
 
 class MathematicsGroupLister(APIView):
 
     def get(self, request, format=None):
-        locations = MathGroup.objects.all()
-        serializer = MathematicsGroupSerializers(locations, many=True)
+        data_objects = MathGroup.objects.all()
+        serializer = MathematicsGroupSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -39,8 +48,8 @@ class MathematicsGroupDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = MathematicsGroupSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = MathematicsGroupSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -49,8 +58,8 @@ class MathematicsGroupDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -58,8 +67,8 @@ class MathematicsGroupDetails(APIView):
 class MathematicsScheduleLister(APIView):
 
     def get(self, request, format=None):
-        locations = MathSchedule.objects.all()
-        serializer = MathematicsScheduleSerializers(locations, many=True)
+        data_locations = MathSchedule.objects.all()
+        serializer = MathematicsScheduleSerializers(data_locations, many=True)
 
         return Response(serializer.data)
 
@@ -88,8 +97,8 @@ class MathematicsScheduleDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = MathematicsScheduleSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = MathematicsScheduleSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -98,8 +107,8 @@ class MathematicsScheduleDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -107,8 +116,8 @@ class MathematicsScheduleDetails(APIView):
 class MathematicsHomeworkLister(APIView):
 
     def get(self, request, format=None):
-        locations = MathHomework.objects.all()
-        serializer = MathematicsHomeworkSerializers(locations, many=True)
+        data_objects = MathHomework.objects.all()
+        serializer = MathematicsHomeworkSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -137,8 +146,8 @@ class MathematicsHomeworkDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = MathematicsHomeworkSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = MathematicsHomeworkSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -147,7 +156,7 @@ class MathematicsHomeworkDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)

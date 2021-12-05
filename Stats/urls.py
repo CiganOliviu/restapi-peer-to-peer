@@ -21,11 +21,15 @@ urlpatterns = [
     path('feedback', views.FeedbackLister.as_view(), name='FeedbackLister'),
     path('feedback/<int:pk>', views.FeedbackDetails.as_view(), name='FeedbackDetails'),
 
-    path('teacher-expectations', views.TeacherExpectationLister.as_view(), name='TeacherExpectationLister'),
-    path('teacher-expectations/<int:pk>', views.TeacherExpectationDetails.as_view(), name='TeacherExpectationDetails'),
+    path('teacher-expectations', views.TeacherExpectationLister.as_view(),
+         name='TeacherExpectationLister'),
+    path('teacher-expectations/<int:pk>', views.TeacherExpectationDetails.as_view(),
+         name='TeacherExpectationDetails'),
 
-    path('student-expectations', views.StudentExpectationLister.as_view(), name='StudentExpectationLister'),
-    path('student-expectations/<int:pk>', views.StudentExpectationDetails.as_view(), name='StudentExpectationDetails'),
+    path('student-expectations', views.StudentExpectationLister.as_view(),
+         name='StudentExpectationLister'),
+    path('student-expectations/<int:pk>', views.StudentExpectationDetails.as_view(),
+         name='StudentExpectationDetails'),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
 

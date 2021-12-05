@@ -15,6 +15,13 @@ class HighSchoolProfile(models.Model):
         return self.profile
 
 
+class HighSchool(models.Model):
+    name = models.CharField(max_length=150, unique=True, default=None)
+
+    def __str__(self):
+        return self.name
+
+
 class Town(models.Model):
     name = models.CharField(max_length=200, unique=True, default="None")
 

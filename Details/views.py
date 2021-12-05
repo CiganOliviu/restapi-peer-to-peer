@@ -6,14 +6,14 @@ from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 from knox.models import AuthToken
-from .serializers import *
+from Details.serializers import *
 
 
 class DomainLister(APIView):
 
     def get(self, request, format=None):
-        locations = Domain.objects.all()
-        serializer = DomainSerializers(locations, many=True)
+        data_objects = Domain.objects.all()
+        serializer = DomainSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -42,8 +42,8 @@ class DomainDetail(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = DomainSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = DomainSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -52,8 +52,8 @@ class DomainDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -61,8 +61,8 @@ class DomainDetail(APIView):
 class HighSchoolProfileLister(APIView):
 
     def get(self, request, format=None):
-        locations = HighSchoolProfile.objects.all()
-        serializer = HighSchoolProfileSerializers(locations, many=True)
+        data_objects = HighSchoolProfile.objects.all()
+        serializer = HighSchoolProfileSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -91,8 +91,8 @@ class HighSchoolProfileDetail(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = HighSchoolProfileSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = HighSchoolProfileSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -101,8 +101,57 @@ class HighSchoolProfileDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class HighSchoolLister(APIView):
+
+    def get(self, request, format=None):
+        data_objects = HighSchool.objects.all()
+        serializer = HighSchoolSerializers(data_objects, many=True)
+
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = HighSchoolSerializers(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class HighSchoolDetail(APIView):
+
+    def get_post(self, pk):
+        try:
+            return HighSchool.objects.get(pk=pk)
+        except:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        post = self.get_post(pk)
+        serializer = HighSchoolSerializers(post)
+
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        post = self.get_post(pk)
+        serializer = HighSchoolSerializers(post, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -110,8 +159,8 @@ class HighSchoolProfileDetail(APIView):
 class TownLister(APIView):
 
     def get(self, request, format=None):
-        locations = Town.objects.all()
-        serializer = TownSerializers(locations, many=True)
+        data_objects = Town.objects.all()
+        serializer = TownSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -140,8 +189,8 @@ class TownDetail(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = TownSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = TownSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -150,8 +199,8 @@ class TownDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -159,8 +208,8 @@ class TownDetail(APIView):
 class UniversitieLister(APIView):
 
     def get(self, request, format=None):
-        locations = Universitie.objects.all()
-        serializer = UniversitieSerializers(locations, many=True)
+        data_objects = Universitie.objects.all()
+        serializer = UniversitieSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -189,8 +238,8 @@ class UniversitiesDetail(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = UniversitieSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = UniversitieSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -199,8 +248,8 @@ class UniversitiesDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -208,8 +257,8 @@ class UniversitiesDetail(APIView):
 class FacultieLister(APIView):
 
     def get(self, request, format=None):
-        locations = Facultie.objects.all()
-        serializer = FacultieSerializers(locations, many=True)
+        data_objects = Facultie.objects.all()
+        serializer = FacultieSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -238,8 +287,8 @@ class FacultieDetail(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = FacultieSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = FacultieSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -248,8 +297,8 @@ class FacultieDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -257,8 +306,8 @@ class FacultieDetail(APIView):
 class PositionLister(APIView):
 
     def get(self, request, format=None):
-        locations = Position.objects.all()
-        serializer = PositionSerializers(locations, many=True)
+        data_objects = Position.objects.all()
+        serializer = PositionSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -287,8 +336,8 @@ class PositionDetail(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = PositionSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = PositionSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -297,8 +346,8 @@ class PositionDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -306,8 +355,8 @@ class PositionDetail(APIView):
 class UserLister(APIView):
 
     def get(self, request, format=None):
-        locations = User.objects.all()
-        serializer = UserSerializers(locations, many=True)
+        data_objects = User.objects.all()
+        serializer = UserSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -336,8 +385,8 @@ class UserDetail(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = UserSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = UserSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -346,8 +395,8 @@ class UserDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -356,7 +405,6 @@ class LoginAPI(KnoxLoginView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
-
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']

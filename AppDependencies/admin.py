@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import *
+from AppDependencies.models import HeroCard
 
 admin.site.register(HeroCard)

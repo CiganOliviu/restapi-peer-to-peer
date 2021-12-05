@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import *
+from AppDependencies.models import HeroCard
 
 
 class HeroCardSerializer(serializers.ModelSerializer):

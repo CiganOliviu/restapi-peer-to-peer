@@ -1,5 +1,13 @@
-from .models import *
-from Stats.serializers import *
+from rest_framework import serializers
+from MathematicsDepartment.models import (
+    MathGroup,
+    MathSchedule,
+    MathHomework
+)
+from Stats.serializers import (
+    ClientSerializers,
+    TeacherSerializers,
+)
 
 
 class MathematicsGroupSerializers(serializers.ModelSerializer):

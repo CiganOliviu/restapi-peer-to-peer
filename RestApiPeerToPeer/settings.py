@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-8u_ga!z3&46k)ddzqcx@tj5s7@1x0w8q*9@nb09q-zsh-0maph
 DEBUG = True
 
 ALLOWED_HOSTS = ['ptpcc.azurewebsites.net',
-                'localhost',
-                '192.168.1.6',
+                 'localhost',
+                 '192.168.0.178',
                  ]
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'MathematicsDepartment',
     'RomanianDepartment',
     'Details',
+    'Contact',
     'corsheaders',
     'rest_framework',
     'knox',
@@ -162,6 +163,7 @@ CORS_ORIGIN_WHITELIST = [
     'https://zealous-hill-015fcdc03.azurestaticapps.net',
     'http://localhost:3000',
     'http://localhost:8000',
+    'http://192.168.0.178:3000',
     'https://www.peertopeerlearning.ro/',
     'https://peertopeerlearning.ro/',
 ]

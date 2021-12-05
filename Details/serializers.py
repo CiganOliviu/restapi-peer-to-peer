@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import *
+from Details.models import *
 
 
 class DomainSerializers(serializers.ModelSerializer):
@@ -12,6 +12,12 @@ class DomainSerializers(serializers.ModelSerializer):
 class HighSchoolProfileSerializers(serializers.ModelSerializer):
     class Meta:
         model = HighSchoolProfile
+        fields = '__all__'
+
+
+class HighSchoolSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = HighSchool
         fields = '__all__'
 
 

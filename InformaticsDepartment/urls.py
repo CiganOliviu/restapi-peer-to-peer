@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from InformaticsDepartment import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
@@ -13,7 +13,8 @@ urlpatterns = [
     path('informatics-schedule/<int:pk>', views.InformaticsScheduleDetails.as_view(),
          name='InformaticsScheduleDetails'),
 
-    path('informatics-homework', views.InformaticsHomeworkLister.as_view(), name='InformaticsHomeworkLister'),
+    path('informatics-homework', views.InformaticsHomeworkLister.as_view(),
+         name='InformaticsHomeworkLister'),
     path('informatics-homework/<int:pk>', views.InformaticsHomeworkDetails.as_view(),
          name='InformaticsHomeworkDetails'),
 ]

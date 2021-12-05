@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from Stats.models import *
 
 
 class TeacherAdmin(admin.ModelAdmin):
@@ -38,7 +38,7 @@ class FeedbackAdmin(admin.ModelAdmin):
     list_display = ('title', 'targetTeacher', 'posted_on')
 
 
-class TeacherExpectationsAdmin(admin.ModelAdmin):
+class TeacherGoalsAdmin(admin.ModelAdmin):
     list_display = ('teacher', 'title', 'posted_on', 'deadline', 'done')
     exclude = ('teacher', )
 
@@ -57,7 +57,7 @@ admin.site.register(Income, IncomeAdmin)
 admin.site.register(Expense, ExpenseAdmin)
 admin.site.register(Staff, StaffAdmin)
 admin.site.register(Feedback, FeedbackAdmin)
-admin.site.register(TeacherExpectation, TeacherExpectationsAdmin)
+admin.site.register(TeacherGoal, TeacherGoalsAdmin)
 admin.site.register(StudentExpectation, StudentExpectationsAdmin)
 
 

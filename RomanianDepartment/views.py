@@ -2,14 +2,14 @@ from django.http import Http404
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import *
+from RomanianDepartment.serializers import *
 
 
 class RomanianGroupLister(APIView):
 
     def get(self, request, format=None):
-        locations = RomanianGroup.objects.all()
-        serializer = RomanianGroupSerializers(locations, many=True)
+        data_objects = RomanianGroup.objects.all()
+        serializer = RomanianGroupSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -38,8 +38,8 @@ class RomanianGroupDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = RomanianGroupSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = RomanianGroupSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -48,8 +48,8 @@ class RomanianGroupDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -57,8 +57,8 @@ class RomanianGroupDetails(APIView):
 class RomanianScheduleLister(APIView):
 
     def get(self, request, format=None):
-        locations = RomanianSchedule.objects.all()
-        serializer = RomanianGroupSerializers(locations, many=True)
+        data_objects = RomanianSchedule.objects.all()
+        serializer = RomanianGroupSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -87,8 +87,8 @@ class RomanianScheduleDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = RomanianScheduleSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = RomanianScheduleSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -97,8 +97,8 @@ class RomanianScheduleDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -106,8 +106,8 @@ class RomanianScheduleDetails(APIView):
 class RomanianHomeworkLister(APIView):
 
     def get(self, request, format=None):
-        locations = RomanianHomework.objects.all()
-        serializer = RomanianHomeworkSerializers(locations, many=True)
+        data_objects = RomanianHomework.objects.all()
+        serializer = RomanianHomeworkSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
@@ -136,8 +136,8 @@ class RomanianHomeworkDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        locations = self.get_post(pk)
-        serializer = RomanianHomeworkSerializers(locations, data=request.data)
+        post = self.get_post(pk)
+        serializer = RomanianHomeworkSerializers(post, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -146,8 +146,8 @@ class RomanianHomeworkDetails(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        location = self.get_post(pk)
-        location.delete()
+        post = self.get_post(pk)
+        post.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 

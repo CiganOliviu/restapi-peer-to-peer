@@ -1,6 +1,6 @@
 from knox import views as knox_views
 from django.urls import path
-from . import views
+from Details import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
@@ -9,6 +9,9 @@ urlpatterns = [
 
     path('high-school-profile', views.HighSchoolProfileLister.as_view(), name='HighSchoolProfileLister'),
     path('high-school-profile/<int:pk>', views.HighSchoolProfileDetail.as_view(), name='HighSchoolProfileDetail'),
+
+    path('high-school', views.HighSchoolLister.as_view(), name='HighSchoolLister'),
+    path('high-school/<int:pk>', views.HighSchoolDetail.as_view(), name='HighSchoolDetail'),
 
     path('town', views.TownLister.as_view(), name='TownLister'),
     path('town/<int:pk>', views.TownDetail.as_view(), name='TownDetail'),
