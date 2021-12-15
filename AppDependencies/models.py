@@ -10,3 +10,20 @@ class HeroCard(models.Model):
     def __str__(self):
         return self.title
 
+
+class HomeworkCard(models.Model):
+    alt = models.CharField(max_length=100, default="Simple alt")
+    image = models.ImageField(upload_to='app-dependencies/homework-card-wallpapers/',
+                              default='app-dependencies/homework-card-wallpapers/default.jpg')
+
+    def __str__(self):
+        return self.alt
+
+
+class ScheduleCard(models.Model):
+    alt = models.CharField(max_length=100, default="Simple alt")
+    image = models.ImageField(upload_to='app-dependencies/schedule-card-wallpapers/',
+                              default='app-dependencies/schedule-card-wallpapers/default.jpg')
+
+    def __str__(self):
+        return self.alt
