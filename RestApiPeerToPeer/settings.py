@@ -27,6 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['ptpcc.azurewebsites.net',
                  'localhost',
                  '192.168.0.178',
+                 '127.0.0.1'
                  ]
 
 # Application definition
