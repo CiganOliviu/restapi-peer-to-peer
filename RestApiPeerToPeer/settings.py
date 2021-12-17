@@ -165,8 +165,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://192.168.0.178:3000',
-    'https://www.peertopeerlearning.ro/',
-    'https://peertopeerlearning.ro/',
+    'https://www.peertopeerlearning.ro',
+    'https://peertopeerlearning.ro',
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
