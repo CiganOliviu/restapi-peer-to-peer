@@ -65,7 +65,7 @@ class Expense(models.Model):
 
 
 class Income(models.Model):
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE, default=None, blank=False)
+    staff = models.ForeignKey(User, on_delete=models.CASCADE, default=None, blank=False)
     income = models.IntegerField(default=0)
 
     def __str__(self):

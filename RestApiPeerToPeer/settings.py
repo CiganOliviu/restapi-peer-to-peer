@@ -27,6 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['ptpcc.azurewebsites.net',
                  'localhost',
                  '192.168.0.178',
+                 '127.0.0.1'
                  ]
 
 # Application definition
@@ -164,8 +165,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://192.168.0.178:3000',
-    'https://www.peertopeerlearning.ro/',
-    'https://peertopeerlearning.ro/',
+    'https://www.peertopeerlearning.ro',
+    'https://peertopeerlearning.ro',
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
