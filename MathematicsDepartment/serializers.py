@@ -23,7 +23,7 @@ class MathematicsGroupSerializers(serializers.ModelSerializer):
 class MathematicsScheduleSerializers(serializers.ModelSerializer):
 
     teacher = TeacherSerializers(read_only=True)
-    group = MathematicsGroupSerializers(many=True)
+    group = MathematicsGroupSerializers(read_only=True)
 
     class Meta:
         model = MathSchedule
