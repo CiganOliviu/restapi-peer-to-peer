@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['ptpcc.azurewebsites.net',
                  'localhost',
-                 '192.168.0.178',
+                 '192.168.100.6',
                  '127.0.0.1'
                  ]
 
@@ -164,7 +164,7 @@ CORS_ORIGIN_WHITELIST = [
     'https://zealous-hill-015fcdc03.azurestaticapps.net',
     'http://localhost:3000',
     'http://localhost:8000',
-    'http://192.168.0.178:3000',
+    'http://192.168.100.6:3000',
     'https://www.peertopeerlearning.ro',
     'https://peertopeerlearning.ro',
 ]
