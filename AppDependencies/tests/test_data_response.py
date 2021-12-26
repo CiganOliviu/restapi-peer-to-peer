@@ -2,13 +2,13 @@ from rest_framework.test import APITestCase
 from rest_framework.utils import json
 
 from AppDependencies.models import HeroCard, HomeworkCard, ScheduleCard
-from AppDependencies.tests.tests_dependencies import Constants
+from AppDependencies.tests.tests_dependencies import AppDependenciesPaths
 
 
 class HeroCardDataTests(APITestCase):
 
     def setUp(self):
-        self.constants = Constants()
+        self.constants = AppDependenciesPaths()
         HeroCard.objects.create(title='Welcome to PeerToPeer learning',
                                 overview='Delivering Experiences That Students Love',
                                 image='wallpapers/wallpaper.jpg')
@@ -33,7 +33,7 @@ class HeroCardDataTests(APITestCase):
 class HomeworkCardTests(APITestCase):
 
     def setUp(self):
-        self.constants = Constants()
+        self.constants = AppDependenciesPaths()
         HomeworkCard.objects.create(alt='Simple homework title',
                                     image='wallpapers/wallpaper.jpg')
 
@@ -56,7 +56,7 @@ class HomeworkCardTests(APITestCase):
 class ScheduleCardTests(APITestCase):
 
     def setUp(self):
-        self.constants = Constants()
+        self.constants = AppDependenciesPaths()
         ScheduleCard.objects.create(alt='Simple schedule title',
                                     image='wallpapers/wallpaper.jpg')
 
