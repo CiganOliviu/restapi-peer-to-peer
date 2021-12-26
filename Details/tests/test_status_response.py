@@ -36,7 +36,3 @@ class DetailsStatusResponseTest(APITestCase):
     def test_position_response(self):
         response = self.client.get(self.details_paths.build_position_url())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_user_response(self):
-        response = self.client.get(self.details_paths.build_user_url())
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
