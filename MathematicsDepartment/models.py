@@ -39,7 +39,7 @@ class MathHomework(models.Model):
                              null=True)
     title = models.CharField(max_length=150, default=None, blank=False, unique=True)
     groups = models.ManyToManyField(MathGroup, default=None, blank=False)
-    file = models.FileField(upload_to='homeworks/informatics', default='None', blank=True)
+    file = models.FileField(upload_to='homeworks/mathematics', default='None', blank=True)
     tips = models.TextField(default='None', blank=True)
     optional = models.BooleanField(default=False)
     deadline_date = models.DateField(default=datetime.date.today)
