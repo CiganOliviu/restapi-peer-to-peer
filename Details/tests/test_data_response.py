@@ -4,11 +4,12 @@ from rest_framework.utils import json
 from Details.models import *
 from Details.tests.tests_dependencies import DetailsPaths
 
+details_paths = DetailsPaths()
+
 
 class DomainDataResponseTest(APITestCase):
 
     def setUp(self):
-        self.details_paths = DetailsPaths()
         Domain.objects.create(
             domain='Informatics'
         )
@@ -19,7 +20,7 @@ class DomainDataResponseTest(APITestCase):
         }
 
     def test_domain_response_data(self):
-        response = self.client.get(self.details_paths.build_domain_url(), format='json',
+        response = self.client.get(details_paths.build_domain_url(), format='json',
                                    content_type='application/json')
 
         response_data_as_json = json.dumps(response.data[0], sort_keys=True)
@@ -31,7 +32,6 @@ class DomainDataResponseTest(APITestCase):
 class HighSchoolProfileDataResponseTest(APITestCase):
 
     def setUp(self):
-        self.details_paths = DetailsPaths()
         HighSchoolProfile.objects.create(
             profile='Matematica-Informatica'
         )
@@ -42,7 +42,7 @@ class HighSchoolProfileDataResponseTest(APITestCase):
         }
 
     def test_high_school_profile_response_data(self):
-        response = self.client.get(self.details_paths.build_high_school_profile_url(), format='json',
+        response = self.client.get(details_paths.build_high_school_profile_url(), format='json',
                                    content_type='application/json')
 
         response_data_as_json = json.dumps(response.data[0], sort_keys=True)
@@ -54,7 +54,6 @@ class HighSchoolProfileDataResponseTest(APITestCase):
 class HighSchoolDataResponseTest(APITestCase):
 
     def setUp(self):
-        self.details_paths = DetailsPaths()
         HighSchool.objects.create(
             name='Liceul Teoretic Carei'
         )
@@ -65,7 +64,7 @@ class HighSchoolDataResponseTest(APITestCase):
         }
 
     def test_high_school_response_data(self):
-        response = self.client.get(self.details_paths.build_high_school_url(), format='json',
+        response = self.client.get(details_paths.build_high_school_url(), format='json',
                                    content_type='application/json')
 
         response_data_as_json = json.dumps(response.data[0], sort_keys=True)
@@ -77,7 +76,6 @@ class HighSchoolDataResponseTest(APITestCase):
 class TownDataResponseTest(APITestCase):
 
     def setUp(self):
-        self.details_paths = DetailsPaths()
         Town.objects.create(
             name='Cluj-Napoca'
         )
@@ -88,7 +86,7 @@ class TownDataResponseTest(APITestCase):
         }
 
     def test_town_response_data(self):
-        response = self.client.get(self.details_paths.build_town_url(), format='json',
+        response = self.client.get(details_paths.build_town_url(), format='json',
                                    content_type='application/json')
 
         response_data_as_json = json.dumps(response.data[0], sort_keys=True)
@@ -100,8 +98,6 @@ class TownDataResponseTest(APITestCase):
 class UniversityDataResponseTest(APITestCase):
 
     def setUp(self):
-        self.details_paths = DetailsPaths()
-
         Town.objects.create(
             name='Cluj-Napoca'
         )
@@ -118,7 +114,7 @@ class UniversityDataResponseTest(APITestCase):
         }
 
     def test_university_response_data(self):
-        response = self.client.get(self.details_paths.build_university_url(), format='json',
+        response = self.client.get(details_paths.build_university_url(), format='json',
                                    content_type='application/json')
 
         response_data_as_json = json.dumps(response.data[0], sort_keys=True)
@@ -130,8 +126,6 @@ class UniversityDataResponseTest(APITestCase):
 class FacultyDataResponseTest(APITestCase):
 
     def setUp(self):
-        self.details_path = DetailsPaths()
-
         Town.objects.create(
             name='Cluj-Napoca'
         )
@@ -161,7 +155,7 @@ class FacultyDataResponseTest(APITestCase):
         }
 
     def test_faculty_response_data(self):
-        response = self.client.get(self.details_path.build_faculty_url(), format='json',
+        response = self.client.get(details_paths.build_faculty_url(), format='json',
                                    content_filter='application/json')
 
         response_data_as_json = json.dumps(response.data[0], sort_keys=True)

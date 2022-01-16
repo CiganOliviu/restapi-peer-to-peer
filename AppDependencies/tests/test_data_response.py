@@ -4,11 +4,12 @@ from rest_framework.utils import json
 from AppDependencies.models import HeroCard, HomeworkCard, ScheduleCard
 from AppDependencies.tests.tests_dependencies import AppDependenciesPaths
 
+app_dependencies_paths = AppDependenciesPaths()
+
 
 class HeroCardDataTests(APITestCase):
 
     def setUp(self):
-        self.constants = AppDependenciesPaths()
         HeroCard.objects.create(title='Welcome to PeerToPeer learning',
                                 overview='Delivering Experiences That Students Love',
                                 image='wallpapers/wallpaper.jpg')
@@ -21,7 +22,7 @@ class HeroCardDataTests(APITestCase):
         }
 
     def test_hero_card_response_data(self):
-        response = self.client.get(self.constants.build_hero_card_url(), format='json',
+        response = self.client.get(app_dependencies_paths.build_hero_card_url(), format='json',
                                    content_type='application/json')
 
         response_data_as_json = json.dumps(response.data[0], sort_keys=True)
@@ -33,7 +34,6 @@ class HeroCardDataTests(APITestCase):
 class HomeworkCardTests(APITestCase):
 
     def setUp(self):
-        self.constants = AppDependenciesPaths()
         HomeworkCard.objects.create(alt='Simple homework title',
                                     image='wallpapers/wallpaper.jpg')
 
@@ -44,7 +44,7 @@ class HomeworkCardTests(APITestCase):
         }
 
     def test_homework_card_response_data(self):
-        response = self.client.get(self.constants.build_homework_card_url(), format='json',
+        response = self.client.get(app_dependencies_paths.build_homework_card_url(), format='json',
                                    content_type='application/json')
 
         response_data_as_json = json.dumps(response.data[0], sort_keys=True)
@@ -56,7 +56,6 @@ class HomeworkCardTests(APITestCase):
 class ScheduleCardTests(APITestCase):
 
     def setUp(self):
-        self.constants = AppDependenciesPaths()
         ScheduleCard.objects.create(alt='Simple schedule title',
                                     image='wallpapers/wallpaper.jpg')
 
@@ -67,7 +66,7 @@ class ScheduleCardTests(APITestCase):
         }
 
     def test_schedule_card_response_data(self):
-        response = self.client.get(self.constants.build_schedule_card_url(), format='json',
+        response = self.client.get(app_dependencies_paths.build_schedule_card_url(), format='json',
                                    content_type='application/json')
 
         response_data_as_json = json.dumps(response.data[0], sort_keys=True)
