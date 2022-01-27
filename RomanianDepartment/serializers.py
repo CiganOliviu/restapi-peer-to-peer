@@ -19,7 +19,7 @@ class RomanianGroupSerializers(serializers.ModelSerializer):
 class RomanianScheduleSerializers(serializers.ModelSerializer):
 
     teacher = TeacherSerializers(read_only=True)
-    group = RomanianGroupSerializers(many=True)
+    group = RomanianGroupSerializers(read_only=True)
 
     class Meta:
         model = RomanianSchedule

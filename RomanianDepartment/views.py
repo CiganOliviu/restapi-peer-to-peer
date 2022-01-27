@@ -58,7 +58,7 @@ class RomanianScheduleLister(APIView):
 
     def get(self, request, format=None):
         data_objects = RomanianSchedule.objects.all()
-        serializer = RomanianGroupSerializers(data_objects, many=True)
+        serializer = RomanianScheduleSerializers(data_objects, many=True)
 
         return Response(serializer.data)
 
