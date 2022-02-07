@@ -9,6 +9,7 @@ class ContactDataResponseTest(APITestCase):
 
     def setUp(self):
         self.contact_paths = ContactPaths()
+
         Contact.objects.create(
             first_name='Ex1',
             last_name='Ex2',
