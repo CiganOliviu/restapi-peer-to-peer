@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 
-from AppDependencies import update_model_content
+from AppLayout import update_model_content
 from InformaticsDepartment.models import InformaticsSchedule, InformaticsHomework
 from MathematicsDepartment.models import MathSchedule, MathHomework
 from RomanianDepartment.models import RomanianSchedule, RomanianHomework

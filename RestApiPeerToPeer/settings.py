@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['ptpcc.azurewebsites.net',
 
 INSTALLED_APPS = [
     'UpdateSysIndex',
-    'AppDependencies',
+    'AppLayout',
     'Stats',
     'InformaticsDepartment',
     'MathematicsDepartment',

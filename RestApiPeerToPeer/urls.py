@@ -25,7 +25,7 @@ urlpatterns = [
     path('mathematics/', include('MathematicsDepartment.urls')),
     path('romanian/', include('RomanianDepartment.urls')),
     path('stats/', include('Stats.urls')),
-    path('app-dependencies/', include('AppDependencies.urls')),
+    path('app-layout/', include('AppLayout.urls')),
     path('contact/', include('Contact.urls')),
     path('', include('UpdateSysIndex.urls')),
 

@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.test import RequestsClient, APITestCase
 
-from AppDependencies.tests.tests_dependencies import AppDependenciesPaths
+from AppLayout.tests.tests_dependencies import AppDependenciesPaths
 
 
 class AppDependenciesStatusResponseTests(APITestCase):

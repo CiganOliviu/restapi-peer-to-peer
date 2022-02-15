@@ -1,4 +1,4 @@
-from AppDependencies import update_model_content
+from AppLayout import update_model_content
 from Stats.models import *
 import datetime
 
