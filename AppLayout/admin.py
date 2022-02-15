@@ -1,5 +1,5 @@
 from django.contrib import admin
-from AppDependencies.models import HeroCard,HomeworkCard, ScheduleCard
+from AppLayout.models import HeroCard, HomeworkCard, ScheduleCard
 
 admin.site.register(HeroCard)
 admin.site.register(HomeworkCard)

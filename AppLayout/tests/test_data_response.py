@@ -1,8 +1,8 @@
 from rest_framework.test import APITestCase
 from rest_framework.utils import json
 
-from AppDependencies.models import HeroCard, HomeworkCard, ScheduleCard
-from AppDependencies.tests.tests_dependencies import AppDependenciesPaths
+from AppLayout.models import HeroCard, HomeworkCard, ScheduleCard
+from AppLayout.tests.tests_dependencies import AppDependenciesPaths
 
 app_dependencies_paths = AppDependenciesPaths()
 

@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('AppDependencies', '0002_alter_herocard_alt'),
+        ('AppLayout', '0002_alter_herocard_alt'),
     ]
 
     operations = [

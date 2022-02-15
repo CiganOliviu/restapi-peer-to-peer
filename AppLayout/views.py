@@ -3,8 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from AppDependencies.models import HeroCard, HomeworkCard, ScheduleCard
-from AppDependencies.serializer import HeroCardSerializer, HomeworkCardSerializer, ScheduleCardSerializer
+from AppLayout.models import HeroCard, HomeworkCard, ScheduleCard
+from AppLayout.serializer import HeroCardSerializer, HomeworkCardSerializer, ScheduleCardSerializer
 
 
 class HeroCardLister(APIView):
