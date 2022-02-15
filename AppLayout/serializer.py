@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from AppLayout.models import HeroCard, HomeworkCard, ScheduleCard
+from AppLayout.models import HeroCard, HomeworkCard, ScheduleCard, ContentSection, ContentWithImagesSection
 
 
 class HeroCardSerializer(serializers.ModelSerializer):
@@ -18,3 +18,16 @@ class ScheduleCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScheduleCard
         fields = '__all__'
+
+
+class ContentSectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContentSection
+        fields = '__all__'
+
+
+class ContentWithImagesSectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContentWithImagesSection
+        fields = '__all__'
+
