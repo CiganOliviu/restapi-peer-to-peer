@@ -1,6 +1,6 @@
 class AppDependenciesPaths:
     def __init__(self):
-        self.__STANDARD_BACKEND_URL = 'http://localhost:8000/app-dependencies'
+        self.__STANDARD_BACKEND_URL = 'http://localhost:8000/app-layout'
         self.__HERO_CARD_URL = '/hero-card'
         self.__HOMEWORK_CARD_URL = '/homework-card'
         self.__SCHEDULE_CARD_URL = '/schedule-card'
