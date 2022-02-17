@@ -33,6 +33,12 @@ class ContentWithImagesSectionSerializer(serializers.ModelSerializer):
 
 
 class HomeContentSerializer(serializers.ModelSerializer):
+    section_one_title_content = ContentSectionSerializer(read_only=True)
+    section_two_title_content = ContentSectionSerializer(read_only=True)
+    section_one_with_images_content = ContentWithImagesSectionSerializer(read_only=True)
+    section_two_with_images_content = ContentWithImagesSectionSerializer(read_only=True)
+    section_three_with_images_content = ContentWithImagesSectionSerializer(read_only=True)
+
     class Meta:
         model = HomeContent
         fields = '__all__'

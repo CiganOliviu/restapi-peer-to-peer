@@ -25,3 +25,41 @@ class AppDependenciesPaths:
 
     def build_home_content_url(self):
         return self.__STANDARD_BACKEND_URL + self.__HOME_CONTENT
+
+
+class AppDependenciesExpectedJsonResponses:
+    @staticmethod
+    def get_home_content_expected_json_response():
+        return {
+            'id': 1,
+            'config_title': 'Config title',
+            'section_one_title_content': {
+                    'id': 1,
+                    'title': 'Content Section Title One',
+                    'content': 'Content Section Content One',
+                },
+            'section_two_title_content': {
+                    'id': 2,
+                    'title': 'Content Section Title Two',
+                    'content': 'Content Section Content Two',
+                },
+            'section_one_with_images_content':
+                {
+                    'id': 1,
+                    'image': '/MEDIA/app-layout/ContentWithImages/wallpaper_one.jpg',
+                    'title': 'Content Image Section Title One',
+                    'content': 'Content Image Section Content One',
+                },
+            'section_two_with_images_content': {
+                    'id': 2,
+                    'image': '/MEDIA/app-layout/ContentWithImages/wallpaper_two.jpg',
+                    'title': 'Content Image Section Title Two',
+                    'content': 'Content Image Section Content Two',
+                },
+            'section_three_with_images_content': {
+                    'id': 3,
+                    'image': '/MEDIA/app-layout/ContentWithImages/wallpaper_three.jpg',
+                    'title': 'Content Image Section Title Three',
+                    'content': 'Content Image Section Content Three',
+                }
+        }

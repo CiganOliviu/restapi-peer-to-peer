@@ -1,10 +1,11 @@
 from rest_framework.test import APITestCase
 from rest_framework.utils import json
 
-from AppLayout.models import HeroCard, HomeworkCard, ScheduleCard, ContentSection, ContentWithImagesSection
-from AppLayout.tests.tests_dependencies import AppDependenciesPaths
+from AppLayout.models import HeroCard, HomeworkCard, ScheduleCard, ContentSection, ContentWithImagesSection, HomeContent
+from AppLayout.tests.tests_dependencies import AppDependenciesPaths, AppDependenciesExpectedJsonResponses
 
 app_dependencies_paths = AppDependenciesPaths()
+app_dependencies_json_responses = AppDependenciesExpectedJsonResponses()
 
 
 class HeroCardDataTests(APITestCase):
@@ -139,5 +140,20 @@ class HomeContentTests(APITestCase):
                                                 title='Content Image Section Title Three',
                                                 content='Content Image Section Content Three')
 
+        HomeContent.objects.create(config_title='Config title',
+                                   section_one_title_content=ContentSection.objects.get(id=1),
+                                   section_two_title_content=ContentSection.objects.get(id=2),
+                                   section_one_with_images_content=ContentWithImagesSection.objects.get(id=1),
+                                   section_two_with_images_content=ContentWithImagesSection.objects.get(id=2),
+                                   section_three_with_images_content=ContentWithImagesSection.objects.get(id=3))
+
+        self.expected_json_response = app_dependencies_json_responses.get_home_content_expected_json_response()
+
     def test_home_content_response_data(self):
-        pass
+        response = self.client.get(app_dependencies_paths.build_home_content_url(), format='json',
+                                   content_type='application/json')
+
+        response_data_as_json = json.dumps(response.data[0], sort_keys=True)
+        expected_response_data_as_json = json.dumps(self.expected_json_response, sort_keys=True)
+
+        self.assertEqual(response_data_as_json, expected_response_data_as_json)
