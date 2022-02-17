@@ -9,6 +9,14 @@ urlpatterns = [
     path('homework-card/<int:pk>', views.HomeworkCardDetail.as_view(), name='HomeworkCardDetail'),
     path('schedule-card', views.ScheduleCardLister.as_view(), name='ScheduleCardLister'),
     path('schedule-card/<int:pk>', views.ScheduleCardDetail.as_view(), name='ScheduleCardDetail'),
+    path('content-section', views.ContentSectionLister.as_view(), name='ContentSectionLister'),
+    path('content-section/<int:pk>', views.ContentSectionDetail.as_view(), name='ContentSectionDetail'),
+    path('content-images-section', views.ContentWithImagesSectionLister.as_view(),
+         name='ContentWithImagesSectionLister'),
+    path('content-images-section/<int:pk>', views.ContentWithImagesSectionDetail.as_view(),
+         name='ContentWithImagesSectionDetail'),
+    path('home-content', views.HomeContentLister.as_view(), name='HomeContentLister'),
+    path('home-content/<int:pk>', views.HomeContentDetail.as_view(), name='HomeContentDetail'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
